@@ -1,13 +1,21 @@
-// src/App.js
-import { Layout, Menu, Button, Row, Col, Card, Typography, Divider } from "antd";
-import { Link } from "react-router-dom";
-import { MessageOutlined, LoginOutlined, UserAddOutlined } from "@ant-design/icons";
+//used assiant 
+
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import {
+  Layout, Menu, Button, Row, Col, Card, Typography, Divider
+} from "antd";
+import {
+  MessageOutlined, LoginOutlined, UserAddOutlined
+} from "@ant-design/icons";
 import "./index.css";
+import SignUp from "./auth/SignUp";
+import Login from "./auth/Login";
 
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
 
-export default function App() {
+function Home() {
+  const nav = useNavigate();
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* NAVBAR */}
@@ -23,16 +31,23 @@ export default function App() {
         </Menu>
 
         <div className="nav-cta">
-          <Button type="link" icon={<UserAddOutlined />} href="#signup" style={{ marginRight: 8, color: "#b7eb8f" }}>
+          <Button
+            type="link"
+            icon={<UserAddOutlined />}
+            onClick={() => nav("/signup")}
+            style={{ marginRight: 8, color: "#b7eb8f" }}
+          >
             Sign up
           </Button>
-          <Button type="primary" icon={<LoginOutlined />} href="#login">LOG IN</Button>
+          <Button type="primary" icon={<LoginOutlined />} onClick={() => nav("/login")}>
+            LOG IN
+          </Button>
         </div>
       </Header>
 
       {/* HERO */}
       <Content>
-        <section className="hero">
+        <section className="hero" style={{ paddingTop: 120 }}>
           <Title level={2} style={{ marginBottom: 16 }}>
             Financial literacy for everyone
           </Title>
@@ -42,22 +57,14 @@ export default function App() {
 
           <Row gutter={[24, 24]} justify="center" style={{ marginTop: 24 }}>
             <Col xs={24} md={10}>
-              <Card
-                bordered
-                className="select-card"
-                onClick={() => (window.location.href = "/login")} // wire as needed
-              >
-                <Title level={3} style={{ marginBottom: 8 }}>Individuals</Title>
+              <Card bordered className="select-card" onClick={() => nav("/signup")}>
+                <Title level={3}>Individuals</Title>
                 <Paragraph>Personalized lessons, goals & nudges.</Paragraph>
               </Card>
             </Col>
             <Col xs={24} md={10}>
-              <Card
-                bordered
-                className="select-card"
-                onClick={() => (window.location.href = "/enterprise")}
-              >
-                <Title level={3} style={{ marginBottom: 8 }}>Enterprises</Title>
+              <Card bordered className="select-card" onClick={() => nav("/login")}>
+                <Title level={3}>Enterprises</Title>
                 <Paragraph>Analytics & curriculum for your team.</Paragraph>
               </Card>
             </Col>
@@ -77,15 +84,13 @@ export default function App() {
             </Col>
             <Col xs={24} md={7}>
               <Card className="strip-card circle" bordered={false}>
-                <Title level={2} style={{ margin: 0 }}>+$140</Title>
+                <Title level={2}>+$140</Title>
                 <Text type="secondary">avg. monthly savings after 3 actions</Text>
               </Card>
             </Col>
             <Col xs={24} md={7}>
               <Card className="strip-card" bordered={false}>
-                <Paragraph>
-                  “Finally understood APR and paid off my card faster.”
-                </Paragraph>
+                <Paragraph>“Finally understood APR and paid off my card faster.”</Paragraph>
               </Card>
             </Col>
           </Row>
@@ -95,7 +100,9 @@ export default function App() {
         <section className="cta">
           <Title>Start your plan in 2 minutes</Title>
           <Paragraph>Answer a few questions → get a simple action plan.</Paragraph>
-          <Button size="large" type="primary" href="#signup">Get started</Button>
+          <Button size="large" type="primary" onClick={() => nav("/signup")}>
+            Get started
+          </Button>
         </section>
 
         {/* CONTACT */}
@@ -107,7 +114,7 @@ export default function App() {
       </Content>
 
       {/* FOOTER */}
-      <Footer style={{ textAlign: "center" }}>
+      <Footer style={{ textAlign: "center", background: "#001529", color: "#fff" }}>
         © {new Date().getFullYear()} FinEd • Privacy • Terms
       </Footer>
 
@@ -124,3 +131,15 @@ export default function App() {
     </Layout>
   );
 }
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/signup" element={<SignUp />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}
+
