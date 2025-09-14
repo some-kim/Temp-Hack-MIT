@@ -1,15 +1,24 @@
-//used assiant 
-
+// src/App.js
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import {
-  Layout, Menu, Button, Row, Col, Card, Typography, Divider
+  Layout,
+  Menu,
+  Button,
+  Row,
+  Col,
+  Card,
+  Typography,
+  Divider,
 } from "antd";
 import {
-  MessageOutlined, LoginOutlined, UserAddOutlined
+  MessageOutlined,
+  LoginOutlined,
+  UserAddOutlined,
 } from "@ant-design/icons";
 import "./index.css";
 import SignUp from "./auth/SignUp";
 import Login from "./auth/Login";
+import LandingFirstTimeAccount from "./individual/landing_firsttime_account";
 
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
@@ -18,7 +27,6 @@ function Home() {
   const nav = useNavigate();
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      {/* NAVBAR */}
       <Header className="nav">
         <div className="logo">
           <Text strong style={{ color: "#fff", marginLeft: 8 }}>Penny Wise</Text>
@@ -44,7 +52,6 @@ function Home() {
         </div>
       </Header>
 
-      {/* HERO */}
       <Content>
         <section className="hero" style={{ paddingTop: 120 }}>
           <Title level={2} style={{ marginBottom: 16 }}>
@@ -70,7 +77,6 @@ function Home() {
           </Row>
         </section>
 
-        {/* QUOTES / STATS STRIP */}
         <section className="strip" id="learn">
           <Row gutter={[16, 16]} justify="center">
             <Col xs={24} md={7}>
@@ -95,7 +101,6 @@ function Home() {
           </Row>
         </section>
 
-        {/* BIG CTA */}
         <section className="cta">
           <Title>Start your plan in 2 minutes</Title>
           <Paragraph>Answer a few questions → get a simple action plan.</Paragraph>
@@ -104,7 +109,6 @@ function Home() {
           </Button>
         </section>
 
-        {/* CONTACT */}
         <section className="contact" id="contact">
           <Title level={3}>Contact Us</Title>
           <Paragraph>Email: hello@fined.app</Paragraph>
@@ -112,12 +116,10 @@ function Home() {
         </section>
       </Content>
 
-      {/* FOOTER */}
       <Footer style={{ textAlign: "center", background: "#001529", color: "#fff" }}>
         © {new Date().getFullYear()} FinEd • Privacy • Terms
       </Footer>
 
-      {/* FLOATING CHAT BUTTON */}
       <Button
         className="chat-fab"
         shape="round"
@@ -137,8 +139,8 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/app/individual/first-time" element={<LandingFirstTimeAccount />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
-
