@@ -21,8 +21,7 @@ function Home() {
       {/* NAVBAR */}
       <Header className="nav">
         <div className="logo">
-          <img src="/logo192.png" alt="logo" />
-          <Text strong style={{ color: "#fff", marginLeft: 8 }}>FinEd</Text>
+          <Text strong style={{ color: "#fff", marginLeft: 8 }}>Penny Wise</Text>
         </div>
 
         <Menu theme="dark" mode="horizontal" selectable={false} className="nav-menu">
