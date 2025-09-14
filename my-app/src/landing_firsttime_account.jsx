@@ -14,7 +14,10 @@ import {
   Statistic,
 } from "antd";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "../auth/supabaseClient";
+import { supabase } from "./auth/supabaseClient";
+import FinancialGradeChart from "./auth/FinancialGradeChart";
+import CashFlowBarChart from "./auth/CashFlowBarChart"
+import SavingsProjectChart from "./auth/SavingsProjectChart"
 
 const { Header, Content } = Layout;
 const { Title, Paragraph, Text } = Typography;
@@ -185,7 +188,27 @@ export default function LandingFirstTimeAccount() {
               </Row>
             </Card>
           </Col>
+          <section
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",   // allows stacking when not enough space
+    gap: "2rem",
+    padding: "1rem",
+  }}
+>
+  <div style={{ flex: "1 1 400px", maxWidth: "600px" }}>
+    <FinancialGradeChart />
+  </div>
 
+  <div style={{ flex: "1 1 400px", maxWidth: "600px" }}>
+    <CashFlowBarChart />
+  </div>
+  <div style={{ flex: "1 1 400px", maxWidth: "600px" }}>
+    <SavingsProjectChart/>
+  </div>
+</section>
           <Col xs={24} md={12}>
             <Card title="Profile" bordered>
               <Paragraph>

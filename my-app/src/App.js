@@ -18,8 +18,10 @@ import {
 import "./index.css";
 import SignUp from "./auth/SignUp";
 import Login from "./auth/Login";
-import LandingFirstTimeAccount from "./individual/landing_firsttime_account";
-import FinancialGradeChart from "./auth/FinancialGradeChart"
+import LandingFirstTimeAccount from "./landing_firsttime_account";
+
+// import SavingsProjectionChart from "./auth/SavingsProjectionChart"
+
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
 
@@ -76,9 +78,9 @@ function Home() {
             </Col>
           </Row>
         </section>
-        <section>
-          <FinancialGradeChart />;
-        </section>
+       
+
+
 
         <section className="strip" id="learn">
           <Row gutter={[16, 16]} justify="center">
