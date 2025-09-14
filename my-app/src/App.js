@@ -19,7 +19,7 @@ import "./index.css";
 import SignUp from "./auth/SignUp";
 import Login from "./auth/Login";
 import LandingFirstTimeAccount from "./individual/landing_firsttime_account";
-
+import FinancialGradeChart from "./auth/FinancialGradeChart"
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph, Text } = Typography;
 
@@ -29,7 +29,7 @@ function Home() {
     <Layout style={{ minHeight: "100vh" }}>
       <Header className="nav">
         <div className="logo">
-          <Text strong style={{ color: "#fff", marginLeft: 8 }}>Penny Wise</Text>
+          <Text strong style={{ color: "#fff", marginLeft: 8 }}>Prosperity</Text>
         </div>
 
         <Menu theme="dark" mode="horizontal" selectable={false} className="nav-menu">
@@ -75,6 +75,9 @@ function Home() {
               </Card>
             </Col>
           </Row>
+        </section>
+        <section>
+          <FinancialGradeChart />;
         </section>
 
         <section className="strip" id="learn">
